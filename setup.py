@@ -15,3 +15,4 @@ package_data = {
 '' : ['*.txt'],
 '' : ['*.json'],
 }
+)
