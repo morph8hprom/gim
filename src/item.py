@@ -43,6 +43,19 @@ class Consumable(Item):
         super().__init__(name, desc)
         self.effect = effect
 
+def item_list(id, num_of_items):
+    items = {}
+    for i in range(id, num_of_items):
+        try:
+            print('Gathering item data')
+            items[i] = build_item(i)
+            print('Successfully created item {} of {}'.format(i, num_of_items))
+        except FileNotFoundError:
+            print('File not found.  Please check to make sure it exists')
+
+    return items
+
+
 
 
 def build_item(id):
