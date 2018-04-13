@@ -14,6 +14,8 @@ class Item:
         self.desc = desc
 
 
+
+
 class Weapon(Item):
     """
     Parameters and methods for the Weapon subclass
@@ -53,3 +55,8 @@ def build_item(id):
     d['id'] = id
     if d['item_type'] == 'weapon':
         item = Weapon(**d)
+    elif d['item_type'] == 'armor':
+        item = Armor(**d)
+    elif d['item_type'] == 'consumable':
+        item = Consumable(**d)
+    return item
