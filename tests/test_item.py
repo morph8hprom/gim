@@ -17,4 +17,4 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         # Create a variable to contain items of all type and
         # use item_d() to create all item instances
         all_items = item_d(start_id, num_items)
-        weapon_
+        weapon_d = 
