@@ -44,16 +44,16 @@ class Consumable(Item):
         self.effect = effect
 
 def item_d(id, num_of_items):
-    items = {}
+    d = {}
     for i in range(id, num_of_items):
         try:
             print('Gathering item data')
-            items[i] = build_item(i)
+            d[i] = build_item(i)
             print('Successfully created item {} of {}'.format(i, num_of_items))
         except FileNotFoundError:
             print('File not found.  Please check to make sure it exists')
 
-    return items
+    return d
 
 
 def weapon_d(item_dict):

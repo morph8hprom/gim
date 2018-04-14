@@ -16,5 +16,8 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         num_items = 5
         # Create a variable to contain items of all type and
         # use item_d() to create all item instances
-        all_items = item_d(start_id, num_items)
-        weapon_d = 
+        cls.all_items = item_d(start_id, num_items)
+
+    def test_item_has_name(self):
+        for i in self.all_items.values():
+            pass
