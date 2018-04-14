@@ -43,7 +43,7 @@ class Consumable(Item):
         super().__init__(name, desc)
         self.effect = effect
 
-def item_list(id, num_of_items):
+def item_d(id, num_of_items):
     items = {}
     for i in range(id, num_of_items):
         try:
