@@ -76,10 +76,10 @@ def build_item(id):
     jsontext = resource_string(__name__, 'data/item{}.json'.format(id))
     d = json.loads(jsontext.decode('utf-8'))
     d['id'] = id
-    if d['item_type'] == 'weapon':
+    if d['item_type'] == 'Weapon':
         item = Weapon(**d)
-    elif d['item_type'] == 'armor':
+    elif d['item_type'] == 'Armor':
         item = Armor(**d)
-    elif d['item_type'] == 'consumable':
+    elif d['item_type'] == 'Consumable':
         item = Consumable(**d)
     return item
