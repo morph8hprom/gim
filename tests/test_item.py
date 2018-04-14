@@ -11,5 +11,4 @@ class ItemAttrbituesTestCase(unittest.TestCase):
     """
     @classmethod
     def setUpClass(cls):
-
         pass
