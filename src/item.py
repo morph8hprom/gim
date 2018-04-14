@@ -9,9 +9,11 @@ class Item:
     """
     Parameters and methods for the base Item class
     """
-    def __init__(self, name, desc):
+    def __init__(self, id, name, desc, item_type):
+        self.id = id
         self.name = name
         self.desc = desc
+        self.item_type = item_type
 
 
 
@@ -20,8 +22,8 @@ class Weapon(Item):
     """
     Parameters and methods for the Weapon subclass
     """
-    def __init__(self, name, desc, damage, weapon_type):
-        super().__init__(name, desc)
+    def __init__(self, id, name, desc, item_type, damage, weapon_type):
+        super().__init__(id, name, desc, item_type)
         self.damage = damage
         self.weapon_type = weapon_type
 
@@ -30,8 +32,8 @@ class Armor(Item):
     """
     Parameters and methods for the Armor subclass
     """
-    def __init__(self, name, desc, defense, armor_slot):
-        super().__init__(name, desc)
+    def __init__(self, id, name, desc, defense, item_type, armor_slot):
+        super().__init__(id, name, desc, item_type)
         self.defense = defense
         self.armor_slot = armor_slot
 
@@ -39,8 +41,8 @@ class Consumable(Item):
     """
     Parameters and methods for the Consumable subclass
     """
-    def __init__(self, name, desc, effect):
-        super().__init__(name, desc)
+    def __init__(self, id, name, desc, item_type, effect):
+        super().__init__(id, name, desc, item_type)
         self.effect = effect
 
 def item_d(id, num_of_items):
