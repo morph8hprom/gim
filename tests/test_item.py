@@ -103,3 +103,12 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         for i in self.armor_dict.values():
             att = hasattr(i, 'armor_slot')
             self.assertTrue(att)
+            
+    def test_consumable_has_effect(self):
+        """
+        Verifies that all consumable instances have the parameter 'effect'
+        """
+
+        for i in self.consumable_dict.values():
+            att = hasattr(i, 'effect')
+            self.assertTrue(att)
