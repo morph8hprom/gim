@@ -18,12 +18,19 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         # Create variables for starting id and number of items
         start_id = 1
         num_items = 5
+
         # Create a variable to contain items of all type and
         # use item_d() to create all item instances
         cls.all_items = item_d(start_id, num_items)
-        #Create a variable to contain all items with item_type 'weapon'
+
+        # Create a variable to contain all items with item_type 'Weapon'
         cls.weapon_dict = weapon_d(cls.all_items)
 
+        # Create a variable to contain all items with item_type 'Armor'
+        cls.armor_dict = armor_d(cls.all_items)
+
+        # Create a variable to contain all items with item_type 'Consumable'
+        cls.consumable_dict = consumable_d(cls.all_items)
 
     def test_item_has_id(self):
         """
