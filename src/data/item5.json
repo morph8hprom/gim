@@ -1,1 +1,1 @@
-{"name" : "Test item", "desc" : "Test desc", "item_type" : "Consumable"}
+{"name" : "Test item", "desc" : "Test desc", "item_type" : "Consumable", "effect" : {"health" : "+30"}}
