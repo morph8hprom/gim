@@ -65,7 +65,7 @@ def weapon_d(item_dict):
     """
     d = {}
     for i in item_dict.values():
-        if i.item_type == 'Weapon':
+        if i.item_type == "Weapon":
             d[i.id] = i
     return d
 
@@ -79,7 +79,15 @@ def armor_d(item_dict):
             d[i.id] = i
     return d
 
-
+def consumable_d(item_dict):
+    """
+    Takes item dictionary as argument and filters out only consumables
+    """
+    d = {}
+    for i in item_dict.values():
+        if i.item_type = "Consumable":
+            d[i.id] = i
+    return d
 
 def build_item(id):
     """
