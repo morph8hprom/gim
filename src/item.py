@@ -26,6 +26,7 @@ class Weapon(Item):
         super().__init__(id, name, desc, item_type)
         self.damage = damage
         self.weapon_type = weapon_type
+    
 
 
 class Armor(Item):
