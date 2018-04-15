@@ -85,7 +85,7 @@ def consumable_d(item_dict):
     """
     d = {}
     for i in item_dict.values():
-        if i.item_type = "Consumable":
+        if i.item_type == "Consumable":
             d[i.id] = i
     return d
 

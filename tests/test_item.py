@@ -85,3 +85,21 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         for i in self.weapon_dict.values():
             att = hasattr(i, 'weapon_type')
             self.assertTrue(att)
+
+    def test_armor_has_defense(self):
+        """
+        Verifies that all armor instances have the parameter 'defense'
+        """
+
+        for i in self.armor_dict.values():
+            att = hasattr(i, 'defense')
+            self.assertTrue(att)
+
+    def test_armor_has_armor_slot(self):
+        """
+        Verifies that all armor instances have the parameter 'armor_slot'
+        """
+
+        for i in self.armor_dict.values():
+            att = hasattr(i, 'armor_slot')
+            self.assertTrue(att)
