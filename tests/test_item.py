@@ -59,4 +59,22 @@ class ItemAttrbituesTestCase(unittest.TestCase):
 
         for i in self.all_items.values():
             att = hasattr(i, 'item_type')
-            self.assertTrue(att)  
+            self.assertTrue(att)
+
+    def test_weapon_has_damage(self):
+        """
+        Verifies that all weapon isntances have the parameter 'damage'
+        """
+
+        for i in self.weapon_dict.values():
+            att = hasattr(i, 'damage')
+            self.assertTrue(att)
+
+    def test_weapon_has_weapon_type(self):
+        """
+        Verifies that all weapon instances have the parameter 'weapon_type'
+        """
+
+        for i in self.weapon_dict.values():
+            att = hasattr(i, 'weapon_type')
+            self.assertTrue(att)
