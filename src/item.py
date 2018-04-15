@@ -33,7 +33,7 @@ class Armor(Item):
     """
     Parameters and methods for the Armor subclass
     """
-    def __init__(self, id, name, desc, defense, item_type, armor_slot):
+    def __init__(self, id, name, desc, item_type, defense, armor_slot):
         super().__init__(id, name, desc, item_type)
         self.defense = defense
         self.armor_slot = armor_slot
