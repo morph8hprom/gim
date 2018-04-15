@@ -9,9 +9,10 @@ class Item:
     """
     Parameters and methods for the base Item class
     """
-    def __init__(self, name, desc):
+    def __init__(self, name, desc, item_type):
         self.name = name
         self.desc = desc
+        self.item_type = item_type
 
 
 
@@ -20,18 +21,18 @@ class Weapon(Item):
     """
     Parameters and methods for the Weapon subclass
     """
-    def __init__(self, name, desc, damage, weapon_type):
-        super().__init__(name, desc)
-        self.damage = damage
+    def __init__(self, name, desc, item_type, weapon_type, damage):
+        super().__init__(name, desc, item_type)
         self.weapon_type = weapon_type
+        self.damage = damage
 
 
 class Armor(Item):
     """
     Parameters and methods for the Armor subclass
     """
-    def __init__(self, name, desc, defense, armor_slot):
-        super().__init__(name, desc)
+    def __init__(self, name, desc, item_type, defense, armor_slot):
+        super().__init__(name, desc, item_type)
         self.defense = defense
         self.armor_slot = armor_slot
 
@@ -39,8 +40,8 @@ class Consumable(Item):
     """
     Parameters and methods for the Consumable subclass
     """
-    def __init__(self, name, desc, effect):
-        super().__init__(name, desc)
+    def __init__(self, name, desc, item_type, effect):
+        super().__init__(name, desc, item_type)
         self.effect = effect
 
 def item_d(id, num_of_items):
@@ -76,10 +77,10 @@ def build_item(id):
     jsontext = resource_string(__name__, 'data/item{}.json'.format(id))
     d = json.loads(jsontext.decode('utf-8'))
     d['id'] = id
-    if d['item_type'] == 'weapon':
+    if d['item_type'] == 'Weapon':
         item = Weapon(**d)
-    elif d['item_type'] == 'armor':
+    elif d['item_type'] == 'Armor':
         item = Armor(**d)
-    elif d['item_type'] == 'consumable':
+    elif d['item_type'] == 'Consumable':
         item = Consumable(**d)
     return item
