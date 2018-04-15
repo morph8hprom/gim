@@ -26,7 +26,7 @@ class Weapon(Item):
         super().__init__(id, name, desc, item_type)
         self.damage = damage
         self.weapon_type = weapon_type
-    
+
 
 
 class Armor(Item):
@@ -48,7 +48,7 @@ class Consumable(Item):
 
 def item_d(id, num_of_items):
     d = {}
-    for i in range(id, num_of_items):
+    for i in range(id, num_of_items + 1):
         try:
             print('Gathering item data')
             d[i] = build_item(i)
@@ -65,9 +65,10 @@ def weapon_d(item_dict):
     """
     d = {}
     for i in item_dict.values():
-        if i[item_type] == 'Weapon':
-            d[i[id]] = i
+        if i.item_type == 'Weapon':
+            d[i.id] = i
     return d
+
 
 
 
