@@ -69,6 +69,15 @@ def weapon_d(item_dict):
             d[i.id] = i
     return d
 
+def armor_d(item_dict):
+    """
+    Takes item dictionary as argument and filters out only armor
+    """
+    d = {}
+    for i in item_dict.values():
+        if i.item_type == "Armor":
+            d[i.id] = i
+    return d
 
 
 
