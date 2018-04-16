@@ -50,6 +50,15 @@ class ItemAttrbituesTestCase(unittest.TestCase):
             att = hasattr(i, 'name')
             self.assertTrue(att)
 
+    def test_item_name_is_string(self):
+        """
+        Verifies that for all item instances, the parameter 'name' is a string
+        """
+
+        for i in self.all_items.values():
+            att = i.name
+            self.assertIsInstance(att, str)
+
     def test_item_has_desc(self):
         """
         Verifies that all item instances have the parameter 'desc'
@@ -58,6 +67,16 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         for i in self.all_items.values():
             att = hasattr(i, 'desc')
             self.assertTrue(att)
+
+    def test_item_desc_is_string(self):
+        """
+        Verifies that for all item instances, the paramter 'desc' is a string
+        """
+
+        for i in self.all_items.values():
+            att = i.name
+            self.assertIsInstance(att, str)
+
 
     def test_item_has_item_type(self):
         """
@@ -68,6 +87,15 @@ class ItemAttrbituesTestCase(unittest.TestCase):
             att = hasattr(i, 'item_type')
             self.assertTrue(att)
 
+    def test_item_type_is_string(self):
+        """
+        Verfies that for all item instances, the parameter 'item_type' is a string
+        """
+
+        for i in self.all_items.values():
+            att = i.name
+            self.assertIsInstance(att, str)
+
     def test_weapon_has_damage(self):
         """
         Verifies that all weapon isntances have the parameter 'damage'
@@ -76,6 +104,15 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         for i in self.weapon_dict.values():
             att = hasattr(i, 'damage')
             self.assertTrue(att)
+
+    def test_weapon_damage_is_int(self):
+        """
+        Verfies that for all weapon instances, the parameter 'damage' is an integer
+        """
+
+        for i in self.weapon_dict.values():
+            att = i.damage
+            self.assertIsInstance(att, int)
 
     def test_weapon_has_weapon_type(self):
         """
@@ -86,6 +123,15 @@ class ItemAttrbituesTestCase(unittest.TestCase):
             att = hasattr(i, 'weapon_type')
             self.assertTrue(att)
 
+    def test_weapon_type_is_string(self):
+        """
+        Verifies that for all weapon instances, the parameter 'weapon_type' is a string
+        """
+
+        for i in self.weapon_dict.values():
+            att = i.weapon_type
+            self.assertIsInstance(att, str)
+
     def test_armor_has_defense(self):
         """
         Verifies that all armor instances have the parameter 'defense'
@@ -95,6 +141,15 @@ class ItemAttrbituesTestCase(unittest.TestCase):
             att = hasattr(i, 'defense')
             self.assertTrue(att)
 
+    def test_armor_defense_is_int(self):
+        """
+        Verifies that for all armor instances, the parameter defense is an integer
+        """
+
+        for i in self.armor_dict.values():
+            att = i.defense
+            self.assertIsInstance(att, int)
+
     def test_armor_has_armor_slot(self):
         """
         Verifies that all armor instances have the parameter 'armor_slot'
@@ -103,7 +158,16 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         for i in self.armor_dict.values():
             att = hasattr(i, 'armor_slot')
             self.assertTrue(att)
-            
+
+    def test_armor_armor_slot_is_string(self):
+        """
+        Verifies that for all armor instances, the parameter 'armor_slot' is a string
+        """
+
+        for i in self.armor_dict.values():
+            att = i.armor_slot
+            self.assertIsInstance(att, str)
+
     def test_consumable_has_effect(self):
         """
         Verifies that all consumable instances have the parameter 'effect'
@@ -112,3 +176,5 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         for i in self.consumable_dict.values():
             att = hasattr(i, 'effect')
             self.assertTrue(att)
+
+    def test_consumable_effect_is_dict

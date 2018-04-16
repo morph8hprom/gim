@@ -1,1 +1,1 @@
-{"name" : "Test item", "desc" : "Test desc", "item_type" : "Weapon", "damage" : "20", "weapon_type" : "Axe"}
+{"name" : "Test item", "desc" : "Test desc", "item_type" : "Weapon", "damage" : 20, "weapon_type" : "Axe"}
