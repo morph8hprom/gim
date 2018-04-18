@@ -177,4 +177,11 @@ class ItemAttrbituesTestCase(unittest.TestCase):
             att = hasattr(i, 'effect')
             self.assertTrue(att)
 
-    def test_consumable_effect_is_dict
+    def test_consumable_effect_is_dict(self):
+        """
+        Verfies that for all consumable instances, the parameter 'effect' is a dictionary
+        """
+
+        for i in self.consumable_dict.values():
+            att = i.effect
+            self.assertIsInstance(att, list)

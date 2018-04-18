@@ -45,6 +45,13 @@ class Consumable(Item):
     def __init__(self, id, name, desc, item_type, effect):
         super().__init__(id, name, desc, item_type)
         self.effect = effect
+        self.effect_mod = self.effect[mod]
+        self.effect_val = self.effect[val]
+
+    def check_effect(self, effect):
+        """
+        Method to check number of effects
+        """
 
 def item_d(id, num_of_items):
     d = {}
