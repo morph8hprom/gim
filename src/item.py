@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from pkg_resources import resource_string
+from sympy import *
 import json
 """
 File used to define item class, weapon class, armor class, and consumable class
@@ -9,6 +10,7 @@ class Item:
     """
     Parameters and methods for the base Item class
     """
+
     def __init__(self, id, name, desc, item_type):
         self.id = id
         self.name = name
@@ -22,6 +24,7 @@ class Weapon(Item):
     """
     Parameters and methods for the Weapon subclass
     """
+
     def __init__(self, id, name, desc, item_type, damage, weapon_type):
         super().__init__(id, name, desc, item_type)
         self.damage = damage
@@ -33,6 +36,7 @@ class Armor(Item):
     """
     Parameters and methods for the Armor subclass
     """
+
     def __init__(self, id, name, desc, item_type, defense, armor_slot):
         super().__init__(id, name, desc, item_type)
         self.defense = defense
@@ -42,16 +46,12 @@ class Consumable(Item):
     """
     Parameters and methods for the Consumable subclass
     """
-    def __init__(self, id, name, desc, item_type, effect):
-        super().__init__(id, name, desc, item_type)
-        self.effect = effect
-        self.effect_mod = self.effect[mod]
-        self.effect_val = self.effect[val]
 
-    def check_effect(self, effect):
-        """
-        Method to check number of effects
-        """
+    def __init__(self, id, name, desc, item_type, first_effect, second_effect = None):
+        super().__init__(id, name, desc, item_type)
+        self.first_effect = first_effect
+        self.second_effect = second_effect
+
 
 def item_d(id, num_of_items):
     d = {}

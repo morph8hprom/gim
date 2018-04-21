@@ -174,14 +174,14 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         """
 
         for i in self.consumable_dict.values():
-            att = hasattr(i, 'effect')
+            att = hasattr(i, 'eff_list')
             self.assertTrue(att)
 
-    def test_consumable_effect_is_dict(self):
+    def test_consumable_effect_is_list(self):
         """
         Verfies that for all consumable instances, the parameter 'effect' is a dictionary
         """
 
         for i in self.consumable_dict.values():
-            att = i.effect
+            att = i.eff_list
             self.assertIsInstance(att, list)
