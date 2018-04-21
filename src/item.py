@@ -52,6 +52,16 @@ class Consumable(Item):
         self.first_effect = first_effect
         self.second_effect = second_effect
 
+    def _check_stat(self, effect):
+        # Checks which stat to modify
+
+        stat = effect.keys()
+        return stat
+
+    def _apply_effect(player_stat):
+        pass
+
+
 
 def item_d(id, num_of_items):
     d = {}

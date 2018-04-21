@@ -168,20 +168,35 @@ class ItemAttrbituesTestCase(unittest.TestCase):
             att = i.armor_slot
             self.assertIsInstance(att, str)
 
-    def test_consumable_has_effect(self):
+    def test_consumable_has_first_effect(self):
         """
         Verifies that all consumable instances have the parameter 'effect'
         """
 
         for i in self.consumable_dict.values():
-            att = hasattr(i, 'eff_list')
+            att = hasattr(i, 'first_effect')
             self.assertTrue(att)
 
-    def test_consumable_effect_is_list(self):
+    def test_consumable_effect_is_dict(self):
         """
         Verfies that for all consumable instances, the parameter 'effect' is a dictionary
         """
 
         for i in self.consumable_dict.values():
-            att = i.eff_list
-            self.assertIsInstance(att, list)
+            att = i.first_effect
+            self.assertIsInstance(att, dict)
+
+    def test_check_stat_method(self):
+        """
+        Checks that the _check_stat method is working properly
+        """
+
+        for i in self.consumable_dict.values():
+            # Assigns the value of the effect to the variable stat
+            stat = i._check_stat(i.first_effect)
+            if stat != None:
+                ret = True
+            else:
+                ret = False
+
+            self.assertTrue(ret)
