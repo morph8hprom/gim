@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from pkg_resources import resource_string
-from sympy import *
 import json
 """
 File used to define item class, weapon class, armor class, and consumable class
@@ -53,13 +52,19 @@ class Consumable(Item):
         self.second_effect = second_effect
 
     def _check_stat(self, effect):
-        # Checks which stat to modify
-
+        """
+        Checks which stat to modify
+        """
         stat = effect.keys()
         return stat
 
-    def _apply_effect(player_stat):
-        pass
+    def _check_mod(self, effect):
+        """
+        Checks the value for the effect dict
+        """
+        mod_amount = effect.values()
+        return mod_amount
+
 
 
 
