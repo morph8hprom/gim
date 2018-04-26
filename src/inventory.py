@@ -18,6 +18,9 @@ class Inventory():
         # Defines item as an iterable
         return iter(self.items.items())
 
+    def __len__(self):
+        return len(self.items)
+
     def __contains__(self, item):
         # Overwrites __contains__ method for easy use of 'if x in items'
         return item.id in self.items
@@ -33,4 +36,4 @@ class Inventory():
 
     def _add_item(self, item):
         # Adds item to inventory
-        self.items[item.id[item]] = item
+        self.items[item.id] = item
