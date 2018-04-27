@@ -66,17 +66,30 @@ class InventoryMethodsTestCase(unittest.TestCase):
 
         cls.inventory = Inventory()
 
-    def test_inventory_returns_correct_number(self):
+    def test_inventory_len_returns_correct_number(self):
         a = self.inventory.__len__()
         b = len(self.inventory.items.items())
         self.assertEqual(a, b)
 
+    def test_inventory_is_iterable(self):
+        try:
+            iter(self.inventory)
+            att = True
+        except TypeError:
+            att = False
+        self.assertTrue(att)
+
     def test_inventory_add_item_adds_item(self):
         for i in self.all_items.values():
-
-            pre = len(self.inventory)
             self.inventory._add_item(i)
-            post = len(self.inventory)
-
-            self.assertNotEqual(pre, post)
+            item = self.inventory[i]
             
+
+            self.assertEqual(i, item)
+
+
+    def test_contains_method(self):
+        for i in self.all_items.values():
+            self.inventory._add_item(i)
+            att = i in self.inventory
+            self.assertTrue(att)
