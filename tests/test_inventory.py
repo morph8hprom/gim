@@ -81,10 +81,11 @@ class InventoryMethodsTestCase(unittest.TestCase):
 
     def test_inventory_add_item_adds_item(self):
         for i in self.all_items.values():
+            # Adds item from values list to inventory
             self.inventory._add_item(i)
             item = self.inventory[i]
-            
 
+            # Verifies that items are identical
             self.assertEqual(i, item)
 
 
