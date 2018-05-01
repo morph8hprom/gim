@@ -28,6 +28,7 @@ class Weapon(Item):
         super().__init__(id, name, desc, item_type)
         self.damage = damage
         self.weapon_type = weapon_type
+        self.equipped = False
 
 
 
@@ -40,6 +41,7 @@ class Armor(Item):
         super().__init__(id, name, desc, item_type)
         self.defense = defense
         self.armor_slot = armor_slot
+        self.equipped = False
 
 class Consumable(Item):
     """
