@@ -3,7 +3,7 @@
 from item import *
 
 """
-File used to define inventory class and and equipment subclass
+File used to define inventory class and related methods
 """
 
 class Inventory():
