@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-setup(name = "GIM",
+setup(name = "gim",
 version = '0.1.0',
 python_requires = '>=3',
 install_requires = ['cmd2>=0.8.2'],
