@@ -38,7 +38,7 @@ class Armor(Item):
     """
 
     def __init__(self, id = '10', name = 'test armor', desc = 'test desc', item_type = 'Armor', defense = 0, armor_slot = None):
-        super().__init__(id, name, desc, item_type)        
+        super().__init__(id, name, desc, item_type)
         self.defense = defense
         self.armor_slot = armor_slot
         self.equipped = False
@@ -67,65 +67,3 @@ class Consumable(Item):
         """
         mod_amount = effect.values()
         return mod_amount
-
-
-
-
-def item_d(id, num_of_items):
-    d = {}
-    for i in range(id, num_of_items + 1):
-        try:
-            print('Gathering item data')
-            d[i] = build_item(i)
-            print('Successfully created item {} of {}'.format(i, num_of_items))
-        except FileNotFoundError:
-            print('File not found.  Please check to make sure it exists')
-
-    return d
-
-
-def weapon_d(item_dict):
-    """
-    Takes item dictionary as argument and filters out only weapons
-    """
-    d = {}
-    for i in item_dict.values():
-        if i.item_type == "Weapon":
-            d[i.id] = i
-    return d
-
-def armor_d(item_dict):
-    """
-    Takes item dictionary as argument and filters out only armor
-    """
-    d = {}
-    for i in item_dict.values():
-        if i.item_type == "Armor":
-            d[i.id] = i
-    return d
-
-def consumable_d(item_dict):
-    """
-    Takes item dictionary as argument and filters out only consumables
-    """
-    d = {}
-    for i in item_dict.values():
-        if i.item_type == "Consumable":
-            d[i.id] = i
-    return d
-
-def build_item(id):
-    """
-    Gathers item data from json file and returns instance object based on
-    item type.
-    """
-    jsontext = resource_string(__name__, 'data/item{}.json'.format(id))
-    d = json.loads(jsontext.decode('utf-8'))
-    d['id'] = id
-    if d['item_type'] == 'Weapon':
-        item = Weapon(**d)
-    elif d['item_type'] == 'Armor':
-        item = Armor(**d)
-    elif d['item_type'] == 'Consumable':
-        item = Consumable(**d)
-    return item
