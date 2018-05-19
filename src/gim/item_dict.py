@@ -62,7 +62,7 @@ class ItemDict():
             except FileNotFoundError:
                 print('File not found.  Please check to make sure it exists')
 
-        self.all_chars = d
+        self.all_items = d
 
     def _update_weapons(self):
         d = {}
