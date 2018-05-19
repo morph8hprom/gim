@@ -74,6 +74,13 @@ class ItemDict():
     def _update_armor(self):
         d = {}
         for i in self.all_items.values():
-            if i.item_type == 'Armor'
-            d[i.id] = i
+            if i.item_type == 'Armor':
+                d[i.id] = i
         self.armor = d
+
+    def _update_consumables(self):
+        d = {}
+        for i in self.all_items.values():
+            if i.item_type == 'Consumable':
+                d[i.id] = i
+        self.consumables = d
