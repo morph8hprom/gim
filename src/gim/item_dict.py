@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from pkg_resources import resource_string
-from gim import item
+from gim import item as I
 import json
 
 """
@@ -9,7 +9,7 @@ File used to define ItemDict class and it's methods
 """
 
 class ItemDict():
-    def __init__(self, id = 1, num_of_items = 2):
+    def __init__(self, id = 1, num_of_items = 5):
         # Dictionary containing reference to all items
         self.all_items = {}
         # Dictionary containing reference to only weapons
@@ -21,7 +21,7 @@ class ItemDict():
 
         self._id = id
         self._num_of_items = num_of_items
-        self._update_all_items()
+        self._update_main_dict()
         self._update_weapons()
         self._update_armor()
         self._update_consumables()
@@ -47,18 +47,18 @@ class ItemDict():
         d = json.loads(jsontext.decode('utf-8'))
         d['id'] = id
         if d['item_type'] == 'Weapon':
-            item = Weapon(**d)
+            item = I.Weapon(**d)
         elif d['item_type'] == 'Armor':
-            item = Armor(**d)
+            item = I.Armor(**d)
         elif d['item_type'] == 'Consumable':
-            item = Consumable(**d)
+            item = I.Consumable(**d)
         return item
 
     def _update_main_dict(self):
         d = {}
-        for i in range(self._id, self._num_of_chars):
+        for i in range(self._id, self._num_of_items):
             try:
-                d[i] = self._build_character(i)
+                d[i] = self._build_item(i)
             except FileNotFoundError:
                 print('File not found.  Please check to make sure it exists')
 
@@ -68,7 +68,7 @@ class ItemDict():
         d = {}
         for i in self.all_items.values():
             if i.item_type == 'Weapon':
-            d[i.id] = i
+                d[i.id] = i
         self.weapons = d
 
     def _update_armor(self):

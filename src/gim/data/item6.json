@@ -1,0 +1,1 @@
+{"name" : "Test item", "desc" : "Test desc", "item_type" : "Consumable", "first_effect" : {"health" : "+30"}, "second_effect" : {"health" : "+30"}}
