@@ -1,202 +1,163 @@
-# #!/usr/bin/env python3
-#
-# import unittest
-# import json
-# from gim import item
-#
-# class ItemAttrbituesTestCase(unittest.TestCase):
-# 
+#!/usr/bin/env python3
+
+import unittest
+from gim import item as I
+
+class ItemAttrbituesTestCase(unittest.TestCase):
+    """
+    Contains tests for Item instance attributes
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        """
+        Builds test instance of Item using default parameters
+        """
+        cls.test_item = I.Item()
+
+    def test_item_has_id(self):
+        att = hasattr(self.test_item, 'id')
+        self.assertTrue(att)
+
+    def test_item_has_name(self):
+        att = hasattr(self.test_item, 'name')
+        self.assertTrue(att)
+
+    def test_item_has_desc(self):
+        att = hasattr(self.test_item, 'desc')
+        self.assertTrue(att)
+
+    def test_item_has_item_type(self):
+        att = hasattr(self.test_item, 'item_type')
+        self.assertTrue(att)
+
+class WeaponAttributesTestCase(unittest.TestCase):
+    """
+    Contains tests for Weapon instance attributes
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        """
+        Builds test instance of Weapon using default parameters
+        """
+        cls.test_weapon = I.Weapon()
+
+    def test_weapon_has_id(self):
+        att = hasattr(self.test_weapon, 'id')
+        self.assertTrue(att)
+
+    def test_weapon_has_name(self):
+        att = hasattr(self.test_weapon, 'name')
+        self.assertTrue(att)
+
+    def test_weapon_has_desc(self):
+        att = hasattr(self.test_weapon, 'desc')
+        self.assertTrue(att)
+
+    def test_weapon_has_item_type(self):
+        att = hasattr(self.test_weapon, 'item_type')
+        self.assertTrue(att)
+
+    def test_weapon_has_damage(self):
+        att = hasattr(self.test_weapon, 'damage')
+        self.assertTrue(att)
+
+    def test_weapon_has_weapon_type(self):
+        att = hasattr(self.test_weapon, 'weapon_type')
+        self.assertTrue(att)
+
+    def test_weapon_has_equipped(self):
+        att = hasattr(self.test_weapon, 'equipped')
+        self.assertTrue(att)
+
+class ArmorAttributesTestCase(unittest.TestCase):
+    """
+    Contains tests for Armor instance attributes
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        """
+        Builds a test instance of Armor using default parameters
+        """
+        cls.test_armor = I.Armor()
+
+    def test_armor_has_id(self):
+        att = hasattr(self.test_armor, 'id')
+        self.assertTrue(att)
+
+    def test_armor_has_name(self):
+        att = hasattr(self.test_armor, 'name')
+        self.assertTrue(att)
+
+    def test_armor_has_desc(self):
+        att = hasattr(self.test_armor, 'desc')
+        self.assertTrue(att)
+
+    def test_armor_has_item_type(self):
+        att = hasattr(self.test_armor, 'item_type')
+        self.assertTrue(att)
+
+    def test_armor_has_defense(self):
+        att = hasattr(self.test_armor, 'defense')
+        self.assertTrue(att)
+
+    def test_armor_has_armor_slot(self):
+        att = hasattr(self.test_armor, 'armor_slot')
+        self.assertTrue(att)
+
+    def test_armor_has_equipped(self):
+        att = hasattr(self.test_armor, 'equipped')
+        self.assertTrue(att)
+
+class ConsumableAttributesTestCase(unittest.TestCase):
+    """
+    Contains tests for Consumable instance attributes
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        """
+        Builds test instance of Consumable using default parameters
+        """
+        cls.test_consumable = I.Consumable()
+
+    def test_consumable_has_id(self):
+        att = hasattr(self.test_consumable, 'id')
+        self.assertTrue(att)
+
+    def test_consumable_has_name(self):
+        att = hasattr(self.test_consumable, 'name')
+        self.assertTrue(att)
+
+    def test_consumable_has_desc(self):
+        att = hasattr(self.test_consumable, 'desc')
+        self.assertTrue(att)
+
+    def test_consumable_has_item_type(self):
+        att = hasattr(self.test_consumable, 'item_type')
+        self.assertTrue(att)
+
+    def test_consumable_has_first_effect(self):
+        att = hasattr(self.test_consumable, 'first_effect')
+        self.assertTrue(att)
+
+    def test_consumable_has_second_effect(self):
+        att = hasattr(self.test_consumable, 'second_effect')
+        self.assertTrue(att)
+
+# class ConsumableMethodsTestCase(unittest.TestCase):
 #     """
-#     Contains tests for Item instance attributes
+#     Contains tests for Consumable instance methods
 #     """
+#
 #     @classmethod
 #     def setUpClass(cls):
 #         """
-#         Builds a dictionary of all items, a dictionary of only weapons,
-#         a dictionary of only armor, and a dictionary of only consumables
+#         Builds a test instance of Consumable using default parameters
 #         """
-#         # Create variables for starting id and number of items
-#         start_id = 1
-#         num_items = 5
+#         cls.test_consumable = I.Consumable()
 #
-#         # Create a variable to contain items of all type and
-#         # use item_d() to create all item instances
-#         cls.all_items = item_d(start_id, num_items)
-#
-#         # Create a variable to contain all items with item_type 'Weapon'
-#         cls.weapon_dict = weapon_d(cls.all_items)
-#
-#         # Create a variable to contain all items with item_type 'Armor'
-#         cls.armor_dict = armor_d(cls.all_items)
-#
-#         # Create a variable to contain all items with item_type 'Consumable'
-#         cls.consumable_dict = consumable_d(cls.all_items)
-#
-#     def test_item_has_id(self):
-#         """
-#         Verifies that all item instances have the parameter 'id'
-#         """
-#
-#         for i in self.all_items.values():
-#             att = hasattr(i, 'id')
-#             self.assertTrue(att)
-#
-#     def test_item_has_name(self):
-#         """
-#         Verifies that all item instances have the parameter 'name'
-#         """
-#
-#         for i in self.all_items.values():
-#             att = hasattr(i, 'name')
-#             self.assertTrue(att)
-#
-#     def test_item_name_is_string(self):
-#         """
-#         Verifies that for all item instances, the parameter 'name' is a string
-#         """
-#
-#         for i in self.all_items.values():
-#             att = i.name
-#             self.assertIsInstance(att, str)
-#
-#     def test_item_has_desc(self):
-#         """
-#         Verifies that all item instances have the parameter 'desc'
-#         """
-#
-#         for i in self.all_items.values():
-#             att = hasattr(i, 'desc')
-#             self.assertTrue(att)
-#
-#     def test_item_desc_is_string(self):
-#         """
-#         Verifies that for all item instances, the paramter 'desc' is a string
-#         """
-#
-#         for i in self.all_items.values():
-#             att = i.name
-#             self.assertIsInstance(att, str)
-#
-#
-#     def test_item_has_item_type(self):
-#         """
-#         Verifies that all item instances have the parameter 'item_type'
-#         """
-#
-#         for i in self.all_items.values():
-#             att = hasattr(i, 'item_type')
-#             self.assertTrue(att)
-#
-#     def test_item_type_is_string(self):
-#         """
-#         Verfies that for all item instances, the parameter 'item_type' is a string
-#         """
-#
-#         for i in self.all_items.values():
-#             att = i.name
-#             self.assertIsInstance(att, str)
-#
-#     def test_weapon_has_damage(self):
-#         """
-#         Verifies that all weapon isntances have the parameter 'damage'
-#         """
-#
-#         for i in self.weapon_dict.values():
-#             att = hasattr(i, 'damage')
-#             self.assertTrue(att)
-#
-#     def test_weapon_damage_is_int(self):
-#         """
-#         Verfies that for all weapon instances, the parameter 'damage' is an integer
-#         """
-#
-#         for i in self.weapon_dict.values():
-#             att = i.damage
-#             self.assertIsInstance(att, int)
-#
-#     def test_weapon_has_weapon_type(self):
-#         """
-#         Verifies that all weapon instances have the parameter 'weapon_type'
-#         """
-#
-#         for i in self.weapon_dict.values():
-#             att = hasattr(i, 'weapon_type')
-#             self.assertTrue(att)
-#
-#     def test_weapon_type_is_string(self):
-#         """
-#         Verifies that for all weapon instances, the parameter 'weapon_type' is a string
-#         """
-#
-#         for i in self.weapon_dict.values():
-#             att = i.weapon_type
-#             self.assertIsInstance(att, str)
-#
-#     def test_armor_has_defense(self):
-#         """
-#         Verifies that all armor instances have the parameter 'defense'
-#         """
-#
-#         for i in self.armor_dict.values():
-#             att = hasattr(i, 'defense')
-#             self.assertTrue(att)
-#
-#     def test_armor_defense_is_int(self):
-#         """
-#         Verifies that for all armor instances, the parameter defense is an integer
-#         """
-#
-#         for i in self.armor_dict.values():
-#             att = i.defense
-#             self.assertIsInstance(att, int)
-#
-#     def test_armor_has_armor_slot(self):
-#         """
-#         Verifies that all armor instances have the parameter 'armor_slot'
-#         """
-#
-#         for i in self.armor_dict.values():
-#             att = hasattr(i, 'armor_slot')
-#             self.assertTrue(att)
-#
-#     def test_armor_armor_slot_is_string(self):
-#         """
-#         Verifies that for all armor instances, the parameter 'armor_slot' is a string
-#         """
-#
-#         for i in self.armor_dict.values():
-#             att = i.armor_slot
-#             self.assertIsInstance(att, str)
-#
-#     def test_consumable_has_first_effect(self):
-#         """
-#         Verifies that all consumable instances have the parameter 'effect'
-#         """
-#
-#         for i in self.consumable_dict.values():
-#             att = hasattr(i, 'first_effect')
-#             self.assertTrue(att)
-#
-#     def test_consumable_effect_is_dict(self):
-#         """
-#         Verfies that for all consumable instances, the parameter 'effect' is a dictionary
-#         """
-#
-#         for i in self.consumable_dict.values():
-#             att = i.first_effect
-#             self.assertIsInstance(att, dict)
-#
-#     def test_check_stat_method(self):
-#         """
-#         Checks that the _check_stat method is working properly
-#         """
-#
-#         for i in self.consumable_dict.values():
-#             # Assigns the value of the effect to the variable stat
-#             stat = i._check_stat(i.first_effect)
-#             if stat != None:
-#                 ret = True
-#             else:
-#                 ret = False
-#
-#             self.assertTrue(ret)
+#     def test_check_stat(self):
+# 

@@ -38,8 +38,7 @@ class Armor(Item):
     """
 
     def __init__(self, id = '10', name = 'test armor', desc = 'test desc', item_type = 'Armor', defense = 0, armor_slot = None):
-        super().__init__(id, name, desc, item_type)
-        self.item_type = 'Armor'
+        super().__init__(id, name, desc, item_type)        
         self.defense = defense
         self.armor_slot = armor_slot
         self.equipped = False
