@@ -16,6 +16,10 @@ class Item:
         self.desc = desc
         self.item_type = item_type
 
+    def __repr__(self):
+        return 'Id:{}\n Name:{}\n Desc:{}\n Item Type:{}'.format(self.id, self.name, self.desc, self.item_type)
+
+
 
 
 
@@ -24,11 +28,15 @@ class Weapon(Item):
     Parameters and methods for the Weapon subclass
     """
 
-    def __init__(self, id = 8, name = 'test weapon', desc = 'test desc', item_type = 'Weapon', damage = 0, weapon_type = None):
+    def __init__(self, id = 8, name = 'test weapon', desc = 'test desc', item_type = 'Weapon', damage = 0, weapon_type = None, two_handed = False):
         super().__init__(id, name, desc, item_type)
         self.damage = damage
         self.weapon_type = weapon_type
+        self.two_handed = two_handed
         self.equipped = False
+
+
+
 
 
 
@@ -37,10 +45,10 @@ class Armor(Item):
     Parameters and methods for the Armor subclass
     """
 
-    def __init__(self, id = '10', name = 'test armor', desc = 'test desc', item_type = 'Armor', defense = 0, armor_slot = None):
+    def __init__(self, id = '10', name = 'test armor', desc = 'test desc', item_type = 'Armor', defense = 0, slot = None):
         super().__init__(id, name, desc, item_type)
         self.defense = defense
-        self.armor_slot = armor_slot
+        self._slot = slot
         self.equipped = False
 
 class Consumable(Item):
