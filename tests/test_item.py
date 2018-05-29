@@ -103,8 +103,8 @@ class ArmorAttributesTestCase(unittest.TestCase):
         att = hasattr(self.test_armor, 'defense')
         self.assertTrue(att)
 
-    def test_armor_has_armor_slot(self):
-        att = hasattr(self.test_armor, 'armor_slot')
+    def test_armor_has_slot(self):
+        att = hasattr(self.test_armor, 'slot')
         self.assertTrue(att)
 
     def test_armor_has_equipped(self):
@@ -160,4 +160,4 @@ class ConsumableAttributesTestCase(unittest.TestCase):
 #         cls.test_consumable = I.Consumable()
 #
 #     def test_check_stat(self):
-# 
+#
