@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+from pkg_resources import resource_string
 from gim import item as I
 from gim import item_dict as Id
 
@@ -14,7 +15,7 @@ class ShopDict():
         return iter(self._items.items())
 
     def __len__(self):
-        return len(self._stock)
+        return len(self._items)
 
     def __contains__(self, item):
         return item in self._items
@@ -45,3 +46,4 @@ class ShopDict():
                 d[i] = self._build_item(i)
             except FileNotFoundError:
                 print('File not found.  Please check to make sure it exists')
+        self._stock = d

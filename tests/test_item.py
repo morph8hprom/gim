@@ -104,7 +104,7 @@ class ArmorAttributesTestCase(unittest.TestCase):
         self.assertTrue(att)
 
     def test_armor_has_slot(self):
-        att = hasattr(self.test_armor, 'slot')
+        att = hasattr(self.test_armor, '_slot')
         self.assertTrue(att)
 
     def test_armor_has_equipped(self):
