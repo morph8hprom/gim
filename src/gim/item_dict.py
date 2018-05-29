@@ -56,7 +56,7 @@ class ItemDict():
 
     def _update_main_dict(self):
         d = {}
-        for i in range(self._id, self._num_of_items):
+        for i in range(self._id, self._num_of_items + 1):
             try:
                 d[i] = self._build_item(i)
             except FileNotFoundError:
