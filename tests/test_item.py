@@ -16,15 +16,15 @@ class ItemAttrbituesTestCase(unittest.TestCase):
         cls.test_item = I.Item()
 
     def test_item_has_id(self):
-        att = hasattr(self.test_item, 'id')
+        att = hasattr(self.test_item, '_id')
         self.assertTrue(att)
 
     def test_item_has_name(self):
-        att = hasattr(self.test_item, 'name')
+        att = hasattr(self.test_item, '_name')
         self.assertTrue(att)
 
     def test_item_has_desc(self):
-        att = hasattr(self.test_item, 'desc')
+        att = hasattr(self.test_item, '_desc')
         self.assertTrue(att)
 
     def test_item_has_item_type(self):
@@ -44,15 +44,15 @@ class WeaponAttributesTestCase(unittest.TestCase):
         cls.test_weapon = I.Weapon()
 
     def test_weapon_has_id(self):
-        att = hasattr(self.test_weapon, 'id')
+        att = hasattr(self.test_weapon, '_id')
         self.assertTrue(att)
 
     def test_weapon_has_name(self):
-        att = hasattr(self.test_weapon, 'name')
+        att = hasattr(self.test_weapon, '_name')
         self.assertTrue(att)
 
     def test_weapon_has_desc(self):
-        att = hasattr(self.test_weapon, 'desc')
+        att = hasattr(self.test_weapon, '_desc')
         self.assertTrue(att)
 
     def test_weapon_has_item_type(self):
@@ -84,15 +84,15 @@ class ArmorAttributesTestCase(unittest.TestCase):
         cls.test_armor = I.Armor()
 
     def test_armor_has_id(self):
-        att = hasattr(self.test_armor, 'id')
+        att = hasattr(self.test_armor, '_id')
         self.assertTrue(att)
 
     def test_armor_has_name(self):
-        att = hasattr(self.test_armor, 'name')
+        att = hasattr(self.test_armor, '_name')
         self.assertTrue(att)
 
     def test_armor_has_desc(self):
-        att = hasattr(self.test_armor, 'desc')
+        att = hasattr(self.test_armor, '_desc')
         self.assertTrue(att)
 
     def test_armor_has_item_type(self):
@@ -124,15 +124,15 @@ class ConsumableAttributesTestCase(unittest.TestCase):
         cls.test_consumable = I.Consumable()
 
     def test_consumable_has_id(self):
-        att = hasattr(self.test_consumable, 'id')
+        att = hasattr(self.test_consumable, '_id')
         self.assertTrue(att)
 
     def test_consumable_has_name(self):
-        att = hasattr(self.test_consumable, 'name')
+        att = hasattr(self.test_consumable, '_name')
         self.assertTrue(att)
 
     def test_consumable_has_desc(self):
-        att = hasattr(self.test_consumable, 'desc')
+        att = hasattr(self.test_consumable, '_desc')
         self.assertTrue(att)
 
     def test_consumable_has_item_type(self):

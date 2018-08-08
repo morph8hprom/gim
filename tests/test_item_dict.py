@@ -81,7 +81,7 @@ class ItemDictMethodsTestCase(unittest.TestCase):
 
     def test_update_weapons(self):
         test_item = i_d.I.Weapon()
-        self.test_item_d.all_items[test_item.id] = test_item
+        self.test_item_d.all_items[test_item._id] = test_item
         pre_update = len(self.test_item_d.weapons)
         self.test_item_d._update_weapons()
         post_update = len(self.test_item_d.weapons)
@@ -89,7 +89,7 @@ class ItemDictMethodsTestCase(unittest.TestCase):
 
     def test_update_armor(self):
         test_item = i_d.I.Armor()
-        self.test_item_d.all_items[test_item.id] = test_item
+        self.test_item_d.all_items[test_item._id] = test_item
         pre_update = len(self.test_item_d.armor)
         self.test_item_d._update_armor()
         post_update = len(self.test_item_d.armor)
@@ -97,7 +97,7 @@ class ItemDictMethodsTestCase(unittest.TestCase):
 
     def test_update_consumables(self):
         test_item = i_d.I.Consumable()
-        self.test_item_d.all_items[test_item.id] = test_item
+        self.test_item_d.all_items[test_item._id] = test_item
         pre_update = len(self.test_item_d.consumables)
         self.test_item_d._update_consumables()
         post_update = len(self.test_item_d.consumables)

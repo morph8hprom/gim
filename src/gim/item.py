@@ -14,7 +14,7 @@ class Item:
         self._id = id
         self._name = name
         self._desc = desc
-        self._item_type = item_type
+        self.item_type = item_type
 
     def __repr__(self):
         return 'Id:{}\n Name:{}\n Desc:{}\n Item Type:{}'.format(self.id, self.name, self.desc, self.item_type)
