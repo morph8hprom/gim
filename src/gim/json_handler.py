@@ -4,7 +4,7 @@ import json
 import glob
 
 class DirectoryFiles():
-    def __init__(self, directory = 'data/', filename = '*' extension = '.json'):
+    def __init__(self, directory = 'data/', filename = '*', extension = '.json'):
         self._directory = directory
         self._filename = filename
         self._extension = extension
@@ -28,7 +28,10 @@ class DirectoryFiles():
             for c in filename:
                 if c.isdigit():
                     digit += c
-            self._digits.append(int(digit))    
+            try:
+                self._digits.append(int(digit))
+            except ValueError:
+                pass
 
     def _get_next(self):
         self._next = str(self._digits[-1] + 1)
@@ -40,16 +43,23 @@ class JsonHandler():
         self._data = data
 
     def _save_file(self):
+        self._data._to_json()
         with open(self._data._filename, 'w') as f:
             f.write(self._data._json_dump)
 
 
 class ItemData():
-    def __init__(self):
+    def __init__(self, filename = None):
         self._dict = {}
-        self._filename = None
+        self._filename = filename
         self._json_dump = None
-        self._to_json()
+
 
     def _to_json(self):
         self._json_dump = json.dumps(self._dict)
+
+def test():
+    test = DirectoryFiles()
+
+if __name__ == "__main__":
+    test()
