@@ -49,10 +49,18 @@ class JsonHandler():
 
 
 class ItemData():
-    def __init__(self, filename = None):
-        self._dict = {}
+    def __init__(self, item_type = None, filename = None):
+        self._item_type = item_type
         self._filename = filename
+        self._attributes = None
+        self._dict = {}
         self._json_dump = None
+
+    def __iter__(self):
+        return iter(self._dict.items())
+
+    def __setitem__(self, key, item):
+        self._dict[key] = item
 
 
     def _to_json(self):

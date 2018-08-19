@@ -6,7 +6,7 @@ import textwrap
 import cmd2
 from pkg_resources import resource_string
 from gim import json_handler as jh
-from gim import item
+from gim import item as i
 
 class Command(cmd2.Cmd):
     def __init__(self):
@@ -14,8 +14,15 @@ class Command(cmd2.Cmd):
         # Set break_long_words to False to prevent words being split
         self.break_long_words = False
         self.prompt = '>'
-        # conf_new is a flag for confirming creating of a new file
+
+        # FLAGS
+        # flag for confirming creating a new file
         self._conf_new = False
+        # flag for selecting item_type
+        self._sel_type = False
+
+
+
         # current working directory
         self._cwd = None
         # extension
@@ -66,26 +73,51 @@ class Command(cmd2.Cmd):
         instance
         """
         if self._current_file == None:
-            self._cwd = self._all_files._directory
-            self._ext = self._all_files._extension
-            self._next = self._all_files._next
-            _filename = '{}item{}{}'.format(self._cwd, self._next, self._ext)
-            self._current_file = jh.ItemData(_filename)
+            self._create_new()
+
         else:
             self._conf_new = True
             self._msgs._print_msg('current_not_none')
 
     def do_yes(self, arg):
-        
-        if self._conf_new == True:
-            self._cwd = self._all_files._directory
-            self._ext = self._all_files._extension
-            _filename = '{}item{}{}'.format(self._cwd, self._next, self._ext)
-            print('Now working on new file {}'.format(self._current_file._filename))
-            self._current_file = jh.ItemData(_filename)
-            self.conf_new = False
+        if self._conf_new:
+            self._create_new()
+            self._conf_new = False
+
         else:
             pass
+
+    def _create_new(self):
+        self._cwd = self._all_files._directory
+        self._ext = self._all_files._extension
+        self._next = self._all_files._next
+        _filename = '{}item{}{}'.format(self._cwd, self._next, self._ext)
+        self._current_file = jh.ItemData(_filename)
+        self._sel_type = True
+        self._msgs._print_msg('select_type')
+
+
+    def _select_type(self, type):
+        self._current_file._item_type = type
+        self._current_file['item_type'] = type
+
+    def do_weapon(self, arg):
+        if self._sel_type:
+            self._select_type('Weapon')
+        else:
+            pass
+
+    def do_show(self, arg):
+        print(self._current_file._dict)
+
+
+
+
+
+
+
+
+
 
 
 
