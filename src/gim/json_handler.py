@@ -16,7 +16,7 @@ class DirectoryFiles():
         # Isolate only the digits in the filenames
         self._isolate_digits()
         # Store digit for next file in self._next
-        self._get_next()
+        #self._get_next()
 
     def _update_files(self):
         self._files = glob.glob('{}{}{}'.format(self._directory, self._filename, self._extension))

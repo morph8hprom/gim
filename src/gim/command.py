@@ -31,12 +31,18 @@ class Command(cmd2.Cmd):
         self._msgs_file = 'data/cmd_msgs.json'
         # variable to hold instance of MessageHandler()
         self._msgs = None
+        # data file for item attributes
+        self._att_file = 'data/item_att.json'
+        # variable to hold item attributes dict
+        self._item_att = None
         # variable to hold instance of jh.DirectoryFiles()
         self._all_files = None
         # variable to hold instance of jh.ItemData()
         self._current_file = None
         # Load all print messages into a dictionary for easy access
         self._load_msgs()
+        # Load item _attributes
+        self._load_att()
         # Update _all_files
         self._update_dir()
         # Display startup messages
@@ -57,6 +63,15 @@ class Command(cmd2.Cmd):
         jsontext = resource_string(__name__, self._msgs_file)
         d = json.loads(jsontext.decode('utf-8'))
         self._msgs = MsgHandler(**d)
+
+    def _load_att(self):
+        """
+        Load item attribute dictionary from json file specified by self._att_file
+        """
+
+        jsontext = resource_string(__name__, self._att_file)
+        d = json.loads(jsontext.decode('utf-8'))
+        self._item_att = d
 
     def _startup(self):
         """
