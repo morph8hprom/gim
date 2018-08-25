@@ -117,6 +117,9 @@ class Command(cmd2.Cmd):
         self._current_file['item_type'] = type
 
     def do_weapon(self, arg):
+        """
+        Used to select an item type when creating a new item.
+        """
         if self._sel_type:
             self._select_type('Weapon')
         else:
@@ -154,7 +157,8 @@ class MsgHandler():
 
 def test():
     test_inst = Command()
-    test_inst.cmdloop()
+    #test_inst.cmdloop()
+    print(test_inst._all_files._files)
 
 
 if __name__ == "__main__":
