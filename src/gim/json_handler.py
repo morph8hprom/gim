@@ -41,17 +41,6 @@ class DirectoryFiles():
         self._next = str(self._digits[-1] + 1)
 
 
-
-class JsonHandler():
-    def __init__(self, data):
-        self._data = data
-
-    def _save_file(self):
-        self._data._to_json()
-        with open(self._data._filename, 'w') as f:
-            f.write(self._data._json_dump)
-
-
 class ItemData():
     def __init__(self, item_type = None, filename = None):
         self._item_type = item_type

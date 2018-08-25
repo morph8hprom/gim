@@ -73,6 +73,12 @@ class Command(cmd2.Cmd):
         d = json.loads(jsontext.decode('utf-8'))
         self._item_att = d
 
+    def _save_file(self):
+        self._current_file._to_json()
+        with open(self._current_file._filename, 'w') as f:
+            f.write(self._current_file._json_dump)
+
+
     def _startup(self):
         """
         Print startup messages
