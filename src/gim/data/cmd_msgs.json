@@ -1,4 +1,9 @@
 {"welcome" : "Welcome to the CLI for GIM(General Item Management)!  This tool is used to create json data files for items.",
 "new_or_load" : "Would you like to create a new file or load a previously created file for editting?",
 "current_not_none" : "All unsaved data will be lost. Continue?",
-"select_type" : "What type of item would you like to create?  (weapon, armor, consumable)"}
+"select_type" : "What type of item would you like to create?  (weapon, armor, consumable)",
+"name" : "Input item name\n",
+"desc" : "Input item description\n",
+"damage" : "Input weapon damage\n",
+"weapon_type" : "Input weapon type(x, y, z)\n",
+"two_handed" : "Two handed?  True or False\n"}

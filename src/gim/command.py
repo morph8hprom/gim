@@ -109,6 +109,10 @@ class Command(cmd2.Cmd):
             pass
 
     def _create_new(self):
+        """
+        Used to create a new instance of jh.ItemData()
+        and change the _sel_type flag to True
+        """
         self._cwd = self._all_files._directory
         self._ext = self._all_files._extension
         self._next = self._all_files._next
@@ -124,7 +128,7 @@ class Command(cmd2.Cmd):
 
     def do_weapon(self, arg):
         """
-        Used to select an item type when creating a new item.
+        Set item type to Weapon when creating a new item.
         """
         if self._sel_type:
             self._select_type('Weapon')
@@ -133,6 +137,13 @@ class Command(cmd2.Cmd):
 
     def do_show(self, arg):
         print(self._current_file._dict)
+
+    def do_name(self, arg):
+        """
+        Allows the user to set the item name
+        """
+        self._current_file._name = input(self._msgs.name)
+
 
 
 
