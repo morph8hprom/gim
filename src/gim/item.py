@@ -17,7 +17,7 @@ class Item:
         self.item_type = item_type
 
     def __repr__(self):
-        return 'Id:{}\n Name:{}\n Desc:{}\n Item Type:{}'.format(self.id, self.name, self.desc, self.item_type)
+        return 'Id:{}\n Name:{}\n Desc:{}\n Item Type:{}'.format(self._id, self._name, self._desc, self.item_type)
 
 
 

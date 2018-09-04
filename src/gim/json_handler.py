@@ -51,7 +51,7 @@ class ItemData():
         self._json_dump = None
         self._mangle_file = 'data/mangle.json'
         self._mangle_dict = None
-        self._update_mangle
+        self._update_mangle()
 
     def __iter__(self):
         return iter(self._dict.items())
@@ -66,7 +66,16 @@ class ItemData():
 
 
     def _mangle_names(self):
-        self._dict.pop()
+        """
+        Used to mangle attribute names to ensure that there are no conflicts
+        when creating an instance of Item() class.
+        """
+        for k, v in self._mangle_dict.items():
+            try:
+                self._dict[v] = self._dict.pop(k)
+            except (KeyError, ValueError):
+                pass
+
 
 
     def _to_json(self):
