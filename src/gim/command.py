@@ -20,6 +20,8 @@ class Command(cmd2.Cmd):
         self._conf_new = False
         # flag for selecting item_type
         self._sel_type = False
+        # flag for editting attributes
+        self._edit_att = False
 
 
 
@@ -33,7 +35,9 @@ class Command(cmd2.Cmd):
         self._msgs = None
         # data file for item attributes
         self._att_file = 'data/item_att.json'
-        # variable to hold item attributes dict
+        # variable to hold all item attributes dict
+        self._all_att = None
+        # variable to hold specific item type attributes dict
         self._item_att = None
         # variable to hold instance of jh.DirectoryFiles()
         self._all_files = None
@@ -71,12 +75,19 @@ class Command(cmd2.Cmd):
 
         jsontext = resource_string(__name__, self._att_file)
         d = json.loads(jsontext.decode('utf-8'))
-        self._item_att = d
+        self._all_att = d
 
     def _save_file(self):
         self._current_file._to_json()
         with open(self._current_file._filename, 'w') as f:
             f.write(self._current_file._json_dump)
+
+    def _edit_att(self, att, val):
+        """
+        Used to set attribute provided to value provided
+        """
+        self._current_file[att] = val
+
 
 
     def _startup(self):
@@ -125,6 +136,7 @@ class Command(cmd2.Cmd):
     def _select_type(self, type):
         self._current_file._item_type = type
         self._current_file['item_type'] = type
+        self._item_att = self._all_att[type]
 
     def do_weapon(self, arg):
         """
@@ -132,27 +144,46 @@ class Command(cmd2.Cmd):
         """
         if self._sel_type:
             self._select_type('Weapon')
+            self._sel_type = False
+            self._edit_att = True
+            self._msgs._print_msg('att_msg')
+        else:
+            pass
+
+    def do_armor(self, arg):
+        """
+        Set item type to Armor when creating a new item.
+        """
+        if self._sel_type:
+            self._select_type('Armor')
+            self._sel_type = False
+            self._edit_att = True
+            self._msgs._print_msg('att_msg')
+        else:
+            pass
+
+    def do_consumable(self, arg):
+        """
+        Set item type to Consumable when creating a new item.
+        """
+        if self._sel_type:
+            self._select_type('Consumable')
+            self._sel_type = False
+            self._edit_att = True
+            self._msgs._print_msg('att_msg')
         else:
             pass
 
     def do_show(self, arg):
         print(self._current_file._dict)
 
-    def do_name(self, arg):
-        """
-        Allows the user to set the item name
-        """
-        self._current_file._name = input(self._msgs.name)
-
-
-
-
-
-
-
-
-
-
+    def do_edit(self, arg):
+        if arg in self._item_att:
+            self._msgs._print_msg(arg)
+            val = input('>')
+            self._current_file[arg] = val
+        else:
+            self._msgs._print_msg('invalid_att')
 
 
 

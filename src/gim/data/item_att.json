@@ -1,8 +1,15 @@
 {"Weapon" :
-{"name" : "None",
-"desc" : "None",
-"damage" : 0,
-"weapon_type" : "None",
-"two_handed" : "False"
-}
+["name",
+"desc",
+"damage",
+"weapon_type",
+"two_handed"],
+"Armor" :
+["name",
+"desc",
+"defense",
+"_slot"],
+"Consumable" :
+["first_effect",
+"seccond_effect"]
 }

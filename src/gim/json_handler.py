@@ -2,6 +2,7 @@
 
 import json
 import glob
+from pkg_resources import resource_string
 
 class DirectoryFiles():
     def __init__(self, directory = 'data/', filename = '*', extension = '.json'):
@@ -48,12 +49,24 @@ class ItemData():
         self._attributes = None
         self._dict = {}
         self._json_dump = None
+        self._mangle_file = 'data/mangle.json'
+        self._mangle_dict = None
+        self._update_mangle
 
     def __iter__(self):
         return iter(self._dict.items())
 
     def __setitem__(self, key, item):
         self._dict[key] = item
+
+    def _update_mangle(self):
+        jsontext = resource_string(__name__, self._mangle_file)
+        d = json.loads(jsontext.decode('utf-8'))
+        self._mangle_dict = d
+
+
+    def _mangle_names(self):
+        self._dict.pop()
 
 
     def _to_json(self):
