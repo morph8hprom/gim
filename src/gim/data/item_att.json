@@ -2,8 +2,7 @@
 ["name",
 "desc",
 "damage",
-"weapon_type",
-"two_handed"],
+"weapon_type"],
 "Armor" :
 ["name",
 "desc",

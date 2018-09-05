@@ -20,9 +20,6 @@ class Item:
         return 'Id:{}\n Name:{}\n Desc:{}\n Item Type:{}'.format(self._id, self._name, self._desc, self.item_type)
 
 
-
-
-
 class Weapon(Item):
     """
     Parameters and methods for the Weapon subclass
@@ -36,10 +33,6 @@ class Weapon(Item):
         self.equipped = False
 
 
-
-
-
-
 class Armor(Item):
     """
     Parameters and methods for the Armor subclass
@@ -50,6 +43,7 @@ class Armor(Item):
         self.defense = defense
         self._slot = slot
         self.equipped = False
+        
 
 class Consumable(Item):
     """

@@ -22,8 +22,8 @@ class Command(cmd2.Cmd):
         self._sel_type = False
         # flag for editting attributes
         self._edit_att = False
-
-
+        # flag for confirming saving a file
+        self._conf_save = False
 
         # current working directory
         self._cwd = None
@@ -35,6 +35,8 @@ class Command(cmd2.Cmd):
         self._msgs = None
         # data file for item attributes
         self._att_file = 'data/item_att.json'
+        # variable to hold filename for creation of ItemData() instance
+        self._filename = None
         # variable to hold all item attributes dict
         self._all_att = None
         # variable to hold specific item type attributes dict
@@ -99,6 +101,26 @@ class Command(cmd2.Cmd):
         self._msgs._print_msg('welcome')
         self._msgs._print_msg('new_or_load')
 
+    def _create_new(self):
+        """
+        Used to create a new instance of jh.ItemData()
+        and change the _sel_type flag to True
+        """
+        self._cwd = self._all_files._directory
+        self._ext = self._all_files._extension
+        self._next = self._all_files._next
+        filename = '{}item{}{}'.format(self._cwd, self._next, self._ext)
+        self._current_file = jh.ItemData(None, filename)
+        self._sel_type = True
+        self._msgs._print_msg('select_type')
+
+
+    def _select_type(self, type):
+        self._current_file._item_type = type
+        self._current_file['item_type'] = type
+        self._item_att = self._all_att[type]
+        self._att_str = ', '.join(self._item_att)
+
     def do_new(self, arg):
         """
         If current file is None, create new instance of jh.ItemData using
@@ -113,33 +135,33 @@ class Command(cmd2.Cmd):
             self._conf_new = True
             self._msgs._print_msg('current_not_none')
 
+    def do_save(self,arg):
+        if self._current_file == None:
+            pass
+        else:
+            self._conf_save = True
+            self._msgs._print_msg('save_msg')
+
+
     def do_yes(self, arg):
         if self._conf_new:
             self._create_new()
             self._conf_new = False
 
+        elif self._conf_save:
+            self._save_file()
+            self._conf_save = False
+
         else:
             pass
 
-    def _create_new(self):
-        """
-        Used to create a new instance of jh.ItemData()
-        and change the _sel_type flag to True
-        """
-        self._cwd = self._all_files._directory
-        self._ext = self._all_files._extension
-        self._next = self._all_files._next
-        _filename = '{}item{}{}'.format(self._cwd, self._next, self._ext)
-        self._current_file = jh.ItemData(_filename)
-        self._sel_type = True
-        self._msgs._print_msg('select_type')
-
-
-    def _select_type(self, type):
-        self._current_file._item_type = type
-        self._current_file['item_type'] = type
-        self._item_att = self._all_att[type]
-        self._att_str = ', '.join(self._item_att)
+    def do_no(self, arg):
+        if self._conf_new:
+            self._conf_new = False
+        elif self._conf_save:
+            self._conf_save = False
+        else:
+            pass
 
 
     def do_weapon(self, arg):
@@ -154,6 +176,7 @@ class Command(cmd2.Cmd):
         else:
             pass
 
+
     def do_armor(self, arg):
         """
         Set item type to Armor when creating a new item.
@@ -165,6 +188,7 @@ class Command(cmd2.Cmd):
             self._msgs._print_msg('att_msg')
         else:
             pass
+
 
     def do_consumable(self, arg):
         """
@@ -178,27 +202,24 @@ class Command(cmd2.Cmd):
         else:
             pass
 
+
     def do_show(self, arg):
         print(self._current_file._dict)
+
 
     def do_edit(self, arg):
         if arg in self._item_att:
             self._msgs._print_msg(arg)
             val = input('>')
             self._current_file[arg] = val
+
         else:
             self._msgs._print_msg('invalid_att')
+
 
     def do_attributes(self, arg):
         self._msgs._print_msg('current_attributes')
         print(self._att_str)
-
-
-
-
-
-
-
 
 
 
