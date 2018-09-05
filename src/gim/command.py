@@ -39,12 +39,14 @@ class Command(cmd2.Cmd):
         self._all_att = None
         # variable to hold specific item type attributes dict
         self._item_att = None
+        # variable to hold string of item attributes for do_attributes method
+        self._att_str = None
         # variable to hold instance of jh.DirectoryFiles()
         self._all_files = None
         # variable to hold instance of jh.ItemData()
         self._current_file = None
         # Load all print messages into a dictionary for easy access
-        self._load_msgs()
+        self._load_cmd_msgs()
         # Load item _attributes
         self._load_att()
         # Update _all_files
@@ -59,7 +61,7 @@ class Command(cmd2.Cmd):
 
         self._all_files = jh.DirectoryFiles()
 
-    def _load_msgs(self):
+    def _load_cmd_msgs(self):
         """
         Load cmd messages from json file specified by self._msgs_file
         """
@@ -137,6 +139,8 @@ class Command(cmd2.Cmd):
         self._current_file._item_type = type
         self._current_file['item_type'] = type
         self._item_att = self._all_att[type]
+        self._att_str = ', '.join(self._item_att)
+
 
     def do_weapon(self, arg):
         """
@@ -184,6 +188,11 @@ class Command(cmd2.Cmd):
             self._current_file[arg] = val
         else:
             self._msgs._print_msg('invalid_att')
+
+    def do_attributes(self, arg):
+        self._msgs._print_msg('current_attributes')
+        print(self._att_str)
+
 
 
 

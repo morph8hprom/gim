@@ -4,6 +4,7 @@
 "select_type" : "What type of item would you like to create?  (weapon, armor, consumable)",
 "att_msg" : "Choose an attribute to edit.  Use the command attributes to view a list of available attributes.",
 "invalid_att" : "Invalid attribute.  Please try again, or use the command attributes for a list of all available attributes",
+"current_attributes" : "Current attributes available for editing are:\n",
 "name" : "Input item name\n",
 "desc" : "Input item description\n",
 "damage" : "Input weapon damage\n",
