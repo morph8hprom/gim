@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import os
 import json
 import textwrap
 import cmd2
@@ -106,19 +105,29 @@ class Command(cmd2.Cmd):
         Used to create a new instance of jh.ItemData()
         and change the _sel_type flag to True
         """
+        #Set current working directory
         self._cwd = self._all_files._directory
+        # Set file extension
         self._ext = self._all_files._extension
+        # Set next digit to suffix filenames
         self._next = self._all_files._next
+        # Create new filename using string formatting
         filename = '{}item{}{}'.format(self._cwd, self._next, self._ext)
+        # Create instance of jh.ItemData() using filename as parameter
         self._current_file = jh.ItemData(None, filename)
+        # Set flag for type selection
         self._sel_type = True
         self._msgs._print_msg('select_type')
 
 
     def _select_type(self, type):
+        # Set _item_type attribute to specified type
         self._current_file._item_type = type
+        # Set item_type key to specified type
         self._current_file['item_type'] = type
+        # Set item attribute dict
         self._item_att = self._all_att[type]
+        # Convert item attributes to string for easy printing
         self._att_str = ', '.join(self._item_att)
 
     def do_new(self, arg):
@@ -136,6 +145,9 @@ class Command(cmd2.Cmd):
             self._msgs._print_msg('current_not_none')
 
     def do_save(self,arg):
+        """
+        Asks for confirmation to save a fille
+        """
         if self._current_file == None:
             pass
         else:
@@ -144,11 +156,16 @@ class Command(cmd2.Cmd):
 
 
     def do_yes(self, arg):
+        """
+        Used for confirmation
+        """
         if self._conf_new:
+            # If confirming a new file, calls _create_new() method
             self._create_new()
             self._conf_new = False
 
         elif self._conf_save:
+            # If confirming saving a file, calls _save_file() method
             self._save_file()
             self._conf_save = False
 
@@ -156,9 +173,14 @@ class Command(cmd2.Cmd):
             pass
 
     def do_no(self, arg):
+        """
+        Used for confirmation
+        """
         if self._conf_new:
+            # If confirming a new file, resets flag
             self._conf_new = False
         elif self._conf_save:
+            # If confirming saving a file, resets flag
             self._conf_save = False
         else:
             pass
@@ -204,20 +226,34 @@ class Command(cmd2.Cmd):
 
 
     def do_show(self, arg):
+        """
+        Print attributes for current file
+        """
         print(self._current_file._dict)
 
 
     def do_edit(self, arg):
-        if arg in self._item_att:
-            self._msgs._print_msg(arg)
-            val = input('>')
-            self._current_file[arg] = val
+        """
+        Edit specified attribute if provided.
+        If none is provided, prompt user for attribute
+        """
+        try:
+            if arg in self._item_att:
+                self._msgs._print_msg(arg)
+                val = input('>')
+                self._current_file[arg] = val
 
-        else:
+            else:
+                self._msgs._print_msg('invalid_att')
+        except TypeError:
             self._msgs._print_msg('invalid_att')
 
 
     def do_attributes(self, arg):
+        """
+        Provides a list of all attributes available for editing based off of
+        previously selected item type
+        """
         self._msgs._print_msg('current_attributes')
         print(self._att_str)
 
@@ -225,19 +261,13 @@ class Command(cmd2.Cmd):
 
 class MsgHandler():
     def __init__(self, **kwargs):
+        # Generate attributes provided by dict
         self.__dict__.update((key, value) for key, value in kwargs.items())
 
 
     def _print_msg(self, msg):
+        """
+        Print message using textwrap
+        """
         for line in textwrap.wrap(vars(self)[msg], 80):
             print(line)
-
-
-def test():
-    test_inst = Command()
-    #test_inst.cmdloop()
-    print(test_inst._all_files._files)
-
-
-if __name__ == "__main__":
-    test()
